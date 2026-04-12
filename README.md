@@ -1,6 +1,6 @@
 # MOB FT 2026 - Web ET
 
-Professional Educational Trip (ET) application for the **Masa Orientasi Bersama (MOB) FT 2026** at Universitas Surabaya.
+Professional Engineering Tour (ET) application for the **Masa Orientasi Bersama (MOB) FT 2026** at Universitas Surabaya.
 
 ## 📌 Overview
 
