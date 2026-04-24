@@ -11,7 +11,7 @@ Professional Engineering Tour (ET) application for the **Masa Orientasi Bersama 
 - **Interactive Learning**: Serves categorized questions and manages randomized question orders for participants.
 - **Unique Access Code**: Provides a secure mechanism for one-time quiz unlocking using a dedicated text code.
 - **Participation Tracking**: Persists student answers, peer references, and participation history to ensure objective evaluation.
-- **SSO Integration**: Works seamlessly with Web Utama for unified authentication.
+- **Sign in Authentication Token Integration**: Works seamlessly with Web Utama for signing in ET website using token from Web Utama.
 
 ---
 
