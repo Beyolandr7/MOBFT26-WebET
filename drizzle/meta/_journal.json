@@ -8,6 +8,13 @@
       "when": 1776009086544,
       "tag": "0000_pretty_gunslinger",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1777043483580,
+      "tag": "0001_jazzy_quasimodo",
+      "breakpoints": true
     }
   ]
 }
