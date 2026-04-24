@@ -4,13 +4,13 @@ Professional Engineering Tour (ET) application for the **Masa Orientasi Bersama 
 
 ## 📌 Overview
 
-**Web ET** is a specialized sub-application within the MOB FT 2026 ecosystem designed to facilitate interactive Engineering Tour at Fakultas Teknik. It manages QR code-based validation, session-based questions, and real-time participation tracking.
+**Web ET** is a specialized sub-application within the MOB FT 2026 ecosystem designed to facilitate interactive Engineering Tour at Fakultas Teknik. It manages text-based unique code validation, session-based questions with cross-program peer referencing, and real-time participation tracking.
 
 ### Core Responsibilities
 
 - **Interactive Learning**: Serves categorized questions and manages randomized question orders for participants.
-- **QR Code System**: Provides a mechanism for location validation using QR codes across various buildings.
-- **Participation Tracking**: Persists student answers and participation history to ensure objective evaluation.
+- **Unique Access Code**: Provides a secure mechanism for one-time quiz unlocking using a dedicated text code.
+- **Participation Tracking**: Persists student answers, peer references, and participation history to ensure objective evaluation.
 - **SSO Integration**: Works seamlessly with Web Utama for unified authentication.
 
 ---

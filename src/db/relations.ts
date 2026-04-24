@@ -4,20 +4,23 @@ import {
   questions,
   options,
   questionOrders,
-  qrcodes,
-  scannedQrcodes,
+  quizAccessConfig,
+  userAccess,
+  questionFlags,
   userAnswers,
 } from "./schema";
 
 export const usersRelations = relations(users, ({ many }) => ({
   questionOrders: many(questionOrders),
-  scannedQrcodes: many(scannedQrcodes),
+  userAccess: many(userAccess),
+  questionFlags: many(questionFlags),
   userAnswers: many(userAnswers),
 }));
 
 export const questionsRelations = relations(questions, ({ many }) => ({
   options: many(options),
   questionOrders: many(questionOrders),
+  questionFlags: many(questionFlags),
   userAnswers: many(userAnswers),
 }));
 
@@ -40,18 +43,26 @@ export const questionOrdersRelations = relations(questionOrders, ({ one }) => ({
   }),
 }));
 
-export const qrcodesRelations = relations(qrcodes, ({ many }) => ({
-  scannedQrcodes: many(scannedQrcodes),
+export const quizAccessConfigRelations = relations(
+  quizAccessConfig,
+  () => ({})
+);
+
+export const userAccessRelations = relations(userAccess, ({ one }) => ({
+  user: one(users, {
+    fields: [userAccess.usersId],
+    references: [users.id],
+  }),
 }));
 
-export const scannedQrcodesRelations = relations(scannedQrcodes, ({ one }) => ({
-  qrcode: one(qrcodes, {
-    fields: [scannedQrcodes.qrcodesId],
-    references: [qrcodes.id],
-  }),
+export const questionFlagsRelations = relations(questionFlags, ({ one }) => ({
   user: one(users, {
-    fields: [scannedQrcodes.usersId],
+    fields: [questionFlags.usersId],
     references: [users.id],
+  }),
+  question: one(questions, {
+    fields: [questionFlags.questionId],
+    references: [questions.id],
   }),
 }));
 

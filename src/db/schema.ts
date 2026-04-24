@@ -2,7 +2,6 @@ import {
   mysqlTable,
   varchar,
   text,
-  timestamp,
   int,
   mysqlEnum,
   datetime,
@@ -96,31 +95,23 @@ export const questionOrders = mysqlTable(
   })
 );
 
-// 6. QRCodes
-export const qrcodes = mysqlTable(
-  "qrcodes",
+// 6. Quiz Access Configuration (Unified code for all users)
+export const quizAccessConfig = mysqlTable(
+  "quiz_access_config",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement().notNull(),
     code: varchar("code", { length: 191 }).notNull(),
-    gedung: varchar("gedung", { length: 191 }).notNull(),
   },
   (table) => ({
-    codeKey: uniqueIndex("qrcodes_code_unique").on(table.code),
-    gedungKey: uniqueIndex("qrcodes_gedung_unique").on(table.gedung),
+    codeKey: uniqueIndex("quiz_access_config_code_unique").on(table.code),
   })
 );
 
-// 7. Scanned QRCodes
-export const scannedQrcodes = mysqlTable(
-  "scanned_qrcodes",
+// 7. User Access (Tracks if a user has unlocked the quiz)
+export const userAccess = mysqlTable(
+  "user_access",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement().notNull(),
-    qrcodesId: bigint("qrcodes_id", { mode: "number" })
-      .notNull()
-      .references(() => qrcodes.id, {
-        onDelete: "cascade",
-        onUpdate: "cascade",
-      }),
     usersId: bigint("users_id", { mode: "number" })
       .notNull()
       .references(() => users.id, {
@@ -131,12 +122,38 @@ export const scannedQrcodes = mysqlTable(
     updatedAt: datetime("updated_at", { mode: "string" }),
   },
   (table) => ({
-    qrcodesIdx: index("scanned_qrcodes_qrcodes_id_foreign").on(table.qrcodesId),
-    usersIdx: index("scanned_qrcodes_users_id_foreign").on(table.usersId),
+    usersIdx: index("user_access_users_id_foreign").on(table.usersId),
   })
 );
 
-// 8. User Answers
+// 8. Question Flags (Max 3 per user)
+export const questionFlags = mysqlTable(
+  "question_flags",
+  {
+    id: bigint("id", { mode: "number" }).primaryKey().autoincrement().notNull(),
+    usersId: bigint("users_id", { mode: "number" })
+      .notNull()
+      .references(() => users.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
+    questionId: bigint("question_id", { mode: "number" })
+      .notNull()
+      .references(() => questions.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
+    createdAt: datetime("created_at", { mode: "string" }),
+  },
+  (table) => ({
+    usersIdx: index("question_flags_users_id_foreign").on(table.usersId),
+    questionIdx: index("question_flags_question_id_foreign").on(
+      table.questionId
+    ),
+  })
+);
+
+// 9. User Answers
 export const userAnswers = mysqlTable(
   "user_answers",
   {
