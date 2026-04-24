@@ -4,7 +4,7 @@
 The ET Quiz is an interactive module for the Engineering Tour (ET) at MOB FT 2026. It facilitates cross-program interaction and knowledge sharing between students.
 
 ## User Journey
-1.  **SSO Login**: User authenticates via Web Utama SSO token.
+1.  **Login**: User authenticates via Web Utama token.
 2.  **Access Verification**: User inputs the **Unified Access Code** (a single code shared by all participants) to enter the quiz. This is a one-time entry that unlocks the quiz module for the user.
 3.  **Quiz Participation**:
     *   Answer questions related to various engineering departments.
