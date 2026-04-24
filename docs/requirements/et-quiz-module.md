@@ -43,7 +43,9 @@ The ET Quiz is an interactive module for the Engineering Tour (ET) at MOB FT 202
 - **Congratulations Page**: A dedicated template to celebrate completion.
 
 ## Database Schema Integration
-- **`users`**: To check student `programme` and calculate reference limits.
-- **`questions`**: Source of all quiz content.
+- **`users`**: To check student `programme` and calculate dynamic reference limits.
+- **`questions`**: Source of all quiz content and categories.
 - **`user_answers`**: Stores responses and peer reference data (`user_selected_name`, `user_selected_nrp`, etc.).
-- **`qrcodes`**: Validates the dedicated access codes.
+- **`quiz_access_config`**: Stores the unified access code for the entire quiz module.
+- **`user_access`**: Records users who have successfully entered the unified code to unlock the quiz.
+- **`question_flags`**: Tracks flagged questions per user (enforcing the 3-flag limit).
